@@ -20,6 +20,14 @@
   vars_files :
     - vars.yml
   tasks :
+    - name : remove old docker packages
+      package :
+        name : "{{item}}"
+        state : absent
+      with_items :
+        - docker
+        - docker-engine
+        - docker.io
     - docker_service:
         project_src: /root/projects/django-postgresql
         state: absent

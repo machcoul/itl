@@ -62,6 +62,15 @@
         state : present
         update_cache: yes
 
+    - name : Uninstall python packages
+      apt :
+        name : "{{item}}"
+        state : absent
+      with_items :
+        - python-pip
+        - python-requests
+
+
     - docker_service:
         project_src: /root/projects/django-postgresql
         state: absent

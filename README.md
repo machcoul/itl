@@ -1,6 +1,7 @@
 # itl
 my personal project
 
-to deploy
-$ cd itl
-$ make deploy-server
+to deploy on server :
+
+    cd itl
+    make deploy-server

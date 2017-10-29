@@ -20,14 +20,28 @@
   vars_files :
     - vars.yml
   tasks :
-    - name : remove old docker packages
-      package :
+
+    - name : Uninstall old versions
+      apt :
         name : "{{item}}"
         state : absent
       with_items :
         - docker
         - docker-engine
         - docker.io
+
+    - name : Install packages to allow apt to use a repository over HTTPS
+      apt :
+        name : "{{item}}"
+        state : present
+        update_cache: yes
+      with_items :
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - gnupg2
+        - software-properties-common
+
     - docker_service:
         project_src: /root/projects/django-postgresql
         state: absent

@@ -59,7 +59,7 @@
     - name: Update the apt package index and install the latest version of Docker CE
       apt:
         name : docker-ce
-        sate : present
+        state : present
         update_cache: yes
 
     - docker_service:

@@ -10,6 +10,6 @@ to edit hosts
 
     make edit-hosts
 
-to deploy on server :
+to push on github and deploy on server :
 
     make deploy-server 'your comments'

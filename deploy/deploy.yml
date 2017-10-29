@@ -56,10 +56,12 @@
         repo: deb [arch=amd64] https://download.docker.com/linux/debian jessie stable
         state: present
 
-    - name: Update the apt package index
+    - name: Update the apt package index and install the latest version of Docker CE
       apt:
+        name : docker-ce
+        sate : present
         update_cache: yes
-        
+
     - docker_service:
         project_src: /root/projects/django-postgresql
         state: absent

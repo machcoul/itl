@@ -70,6 +70,11 @@
         - python-pip
         - python-requests
 
+    - name : Install pip package
+      easy_install:
+        name: pip
+        state: latest
+
 
     - docker_service:
         project_src: /root/projects/django-postgresql

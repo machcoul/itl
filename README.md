@@ -4,7 +4,11 @@ a password is required
 
 to edit vars.yml
 
-    ansible-vault edit deploy/vars.yml
+    make edit-vars
+
+to edit hosts
+
+    make edit-hosts
 
 to deploy on server :
 

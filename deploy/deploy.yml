@@ -80,6 +80,12 @@
         name: pip
         state: latest
 
+    - name : Install Python library for the Docker Engine API and Multi-container orchestration for Docker
+      pip:
+        name: "{{item}}"
+      with_items :
+        - docker-py
+        - docker-compose
 
     - docker_service:
         project_src: /root/projects/django-postgresql

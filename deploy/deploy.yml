@@ -4,6 +4,10 @@
   vars_files :
     - vars.yml
   tasks :
+    - name : check ssh-pass package
+      package :
+        name : sshpass
+        state : present
     - name : add files
       command: bash -lc "cd .. && git add ."
     - name : commit

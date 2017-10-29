@@ -45,6 +45,12 @@
         - gnupg2
         - software-properties-common
 
+    - name : Add Docker’s official GPG key
+      apt_key:
+        id: 0EBFCD88
+        url: https://download.docker.com/linux/debian/gpg
+        state: present
+
     - docker_service:
         project_src: /root/projects/django-postgresql
         state: absent

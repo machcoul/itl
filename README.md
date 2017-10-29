@@ -2,6 +2,11 @@
 
 a password is required
 
+Requirements :
+
+  - on control node :
+    - sudo apt-get install sshpass
+
 to edit vars.yml
 
     make edit-vars

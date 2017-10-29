@@ -30,11 +30,14 @@
         - docker-engine
         - docker.io
 
+    - name: Update the apt package index
+      apt:
+        update_cache: yes
+
     - name : Install packages to allow apt to use a repository over HTTPS
       apt :
         name : "{{item}}"
         state : present
-        update_cache: yes
       with_items :
         - apt-transport-https
         - ca-certificates

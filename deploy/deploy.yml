@@ -1,0 +1,18 @@
+- name : deploy project
+  hosts : all
+  # environment:
+    # PYTHONPATH: "/usr/local/lib/python2.7/dist-packages"
+  tasks :
+    - name : Hello
+      debug :
+        msg : "hello"
+    # - docker_container:
+    #     image: hello-world
+    #     name: hello
+    - docker_service:
+        project_src: /root/projects/django-postgresql
+        state: absent
+
+    - git:
+        repo: 'https://github.com/machcoul/itl.git'
+        dest: /itl

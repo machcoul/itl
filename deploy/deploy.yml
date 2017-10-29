@@ -80,7 +80,7 @@
         name: pip
         state: latest
 
-    - name : Install Python library for the Docker Engine APIMulti-container orchestration for Docker
+    - name : Install Python library for the Docker Engine API
       pip:
         name: docker-py
 

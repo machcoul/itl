@@ -1,7 +1,9 @@
 # itl
-my personal project
+
+to edit vars.yml
+
+    ansible-vault edit deploy/vars.yml
 
 to deploy on server :
 
-    cd itl
     make deploy-server

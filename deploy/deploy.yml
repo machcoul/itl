@@ -21,6 +21,6 @@
         state: absent
     - git:
         repo: "https://{{repo}}"
-        dest: /itl
+        dest: "{{dest}}"
     - debug:
         msg : "{{git_username}} , {{git_pwd}}"

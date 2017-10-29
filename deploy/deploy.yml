@@ -80,12 +80,14 @@
         name: pip
         state: latest
 
-    - name : Install Python library for the Docker Engine API and Multi-container orchestration for Docker
+    - name : Install Python library for the Docker Engine APIMulti-container orchestration for Docker
       pip:
-        name: "{{item}}"
-      with_items :
-        - docker-py
-        - docker-compose
+        name: docker-py
+
+    - name : Install Multi-container orchestration for Docker
+      pip:
+        name: docker-compose
+        version : 1.9.0
 
     - docker_service:
         project_src: /root/projects/django-postgresql

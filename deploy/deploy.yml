@@ -70,9 +70,9 @@
         - python-pip
         - python-requests
 
-    - name: Install easy_install package
+    - name: Install python-setuptools package
       apt:
-        name : easy_install
+        name : python-setuptools
         state : present
 
     - name : Install pip package

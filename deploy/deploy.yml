@@ -4,10 +4,12 @@
   vars_files :
     - vars.yml
   tasks :
-    - name : git add files
+    - name : add files
       command: bash -lc "cd .. && git add ."
-    - name : git commit
+    - name : commit
       command: bash -lc "cd .. && git commit -m 'test'"
+    - name : push
+      command: bash -lc "git push https://'{{git_username}}':'{{git_pwd}}'@{{repo}}"
 
 - name : deploy project
   hosts : all
@@ -18,7 +20,7 @@
         project_src: /root/projects/django-postgresql
         state: absent
     - git:
-        repo: "{{repo}}"
+        repo: "https://{{repo}}"
         dest: /itl
     - debug:
         msg : "{{git_username}} , {{git_pwd}}"

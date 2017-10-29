@@ -7,7 +7,7 @@ ifeq (deploy-server,$(firstword $(MAKECMDGOALS)))
 endif
 
 deploy-server:
-	cd deploy && ansible-playbook -i hosts --ask-vault-pass --extra-vars "comment=$(RUN_ARGS)" deploy.yml -vv
+	cd deploy && ansible-playbook -i hosts --ask-vault-pass --extra-vars "comment='$(RUN_ARGS)'" deploy.yml -vv
 edit-vars:
 	ansible-vault edit deploy/vars.yml
 edit-hosts:

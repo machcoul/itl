@@ -12,4 +12,4 @@ to edit hosts
 
 to deploy on server :
 
-    make deploy-server
+    make deploy-server 'your comments'

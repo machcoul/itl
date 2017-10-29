@@ -7,7 +7,7 @@
     - name : add files
       command: bash -lc "cd .. && git add ."
     - name : commit
-      command: bash -lc "cd .. && git commit -m 'test'"
+      command: bash -lc "cd .. && git commit -m '{{comment}}'"
     - name : push
       command: bash -lc "git push https://'{{git_username}}':'{{git_pwd}}'@{{repo}}"
 
@@ -22,5 +22,3 @@
     - git:
         repo: "https://{{repo}}"
         dest: "{{dest}}"
-    - debug:
-        msg : "{{git_username}} , {{git_pwd}}"

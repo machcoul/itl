@@ -70,6 +70,11 @@
         - python-pip
         - python-requests
 
+    - name: Install easy_install package
+      apt:
+        name : easy_install
+        state : present
+
     - name : Install pip package
       easy_install:
         name: pip

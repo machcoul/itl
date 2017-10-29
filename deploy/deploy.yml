@@ -1,18 +1,24 @@
+- name : push on github
+  hosts : localhost
+  connection : local
+  vars_files :
+    - vars.yml
+  tasks :
+    - name : git add files
+      command: bash -lc "cd .. && git add ."
+    - name : git commit
+      command: bash -lc "cd .. && git commit -m 'test'"
+
 - name : deploy project
   hosts : all
-  # environment:
-    # PYTHONPATH: "/usr/local/lib/python2.7/dist-packages"
+  vars_files :
+    - vars.yml
   tasks :
-    - name : Hello
-      debug :
-        msg : "hello"
-    # - docker_container:
-    #     image: hello-world
-    #     name: hello
     - docker_service:
         project_src: /root/projects/django-postgresql
         state: absent
-
     - git:
-        repo: 'https://github.com/machcoul/itl.git'
+        repo: "{{repo}}"
         dest: /itl
+    - debug:
+        msg : "{{git_username}} , {{git_pwd}}"

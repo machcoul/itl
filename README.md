@@ -1,25 +1,33 @@
 # itl
 
-This is my project.
+This is my project :-)
 
 ## Getting Started
 
-a password is required
-
 ### Prerequisites
 
-You need to install on the control node :
-  - ansible > 2.3 [Installing ansible](http://docs.ansible.com/ansible/latest/intro_installation.html#latest-releases-via-pip)
-  - sudo apt-get install sshpass
+You need to install on the control machine :
+  - git
+  - ansible > 2.3 [Installing ansible with pip](http://docs.ansible.com/ansible/latest/intro_installation.html#latest-releases-via-pip)
+  - sshpass
 
-to edit vars.yml
+### Installing
+
+Clone the repository
+
+    git clone https://github.com/machcoul/itl.git
+
+Go to the directory
+
+    cd itl
+
+Edit vars.yml and/or edit hosts with your parameters (required password)
 
     make edit-vars
-
-to edit hosts
-
     make edit-hosts
 
-to push on github and deploy on server :
+### Usage
+
+How to push on github and deploy on server (required password)
 
     make deploy-server 'your comments'

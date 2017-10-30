@@ -89,12 +89,12 @@
         name: docker-compose
         # version : 1.9.0
 
-    - name: Getting PYTHONPATH
-      local_action: shell python -c 'import sys; print(":".join(sys.path))'
-      register: pythonpath
-
-    - debug:
-        msg: "PYTHONPATH: {{ pythonpath.stdout }}"
+    # - name: Getting PYTHONPATH
+    #   local_action: shell python -c 'import sys; print(":".join(sys.path))'
+    #   register: pythonpath
+    #
+    # - debug:
+    #     msg: "PYTHONPATH: {{ pythonpath.stdout }}"
 
     - docker_service:
         project_src: /root/projects/django-postgresql

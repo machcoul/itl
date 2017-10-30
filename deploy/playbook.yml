@@ -113,6 +113,16 @@
         - refresh
         - pull
 
+    - name: Remove docker volume
+      docker_volume:
+        name: "{{item}}"
+        state: absent
+      tags :
+        - refresh
+      with_items :
+        - compose_db-data
+        - compose_pg-admin
+
     - docker_service:
         project_src: "{{dest}}/compose"
         state: present

@@ -1,20 +1,22 @@
-# If the first argument is "run"...
-# ifeq (deploy-server,$(firstword $(MAKECMDGOALS)))
-  # use the rest as arguments for "run"
-RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
-  # ...and turn them into do-nothing targets
-$(eval $(RUN_ARGS):;@:)
-# endif
+DIR := deploy
+HOSTS := hosts
+VARS := vars.yml
+PLAYBOOK := playbook.yml
 
-deploy-all:
-	cd deploy && ansible-playbook -i hosts --ask-vault-pass --extra-vars "comment='$(RUN_ARGS)'" deploy.yml -vv
+RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+$(eval $(RUN_ARGS):;@:)
+EDIT := cd $(DIR) && ansible-vault edit
+PLAY := cd $(DIR) && ansible-playbook -vv -i $(HOSTS) -e "comment='$(RUN_ARGS)'" $(PLAYBOOK) --ask-vault-pass
+
+refresh:
+	$(PLAY) -t refresh
 edit-vars:
-	ansible-vault edit deploy/vars.yml
+	$(EDIT) $(VARS)
 edit-hosts:
-	ansible-vault edit deploy/hosts
+	$(EDIT) $(HOSTS)
 init:
-	cd deploy && ansible-playbook -i hosts --ask-vault-pass deploy.yml -vv -t init
+	$(PLAY) -t init
 push:
-	cd deploy && ansible-playbook -i hosts --ask-vault-pass --extra-vars "comment='$(RUN_ARGS)'" deploy.yml -vv -t push
+	$(PLAY) -t push
 pull:
-	cd deploy && ansible-playbook -i hosts --ask-vault-pass deploy.yml -vv -t pull
+	$(PLAY) -t pull

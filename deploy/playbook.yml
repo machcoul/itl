@@ -90,12 +90,12 @@
         project_src: "{{dest}}/compose"
         state: absent
       tags :
-        - deploy
+        - refresh
         - pull
 
     - git:
         repo: "https://{{repo}}"
         dest: "{{dest}}"
       tags :
-        - deploy
+        - refresh
         - pull

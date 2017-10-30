@@ -11,4 +11,4 @@
     command: bash -lc "git push https://'{{git_username}}':'{{git_pwd}}'@{{repo}}"
   tags :
     - push
-    - deploy
+    - refresh

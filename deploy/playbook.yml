@@ -140,7 +140,7 @@
             state: absent
             path: "{{dest}}/compose/django/myapp/migrations/"
         - file :
-            state : present
+            state : touch
             path: "{{dest}}/compose/django/myapp/migrations/__init__.py"
         - command: docker exec django python manage.py makemigrations; python manage.py migrate
       tags :

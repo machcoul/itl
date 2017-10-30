@@ -91,6 +91,8 @@
       tags :
         - refresh
         - pull
+        - down
+        - restart
 
     - docker_service:
         project_src: "{{dest}}/compose"
@@ -100,6 +102,8 @@
       tags :
         - refresh
         - pull
+        - down
+        - restart
 
     - git:
         repo: "https://{{repo}}"
@@ -108,3 +112,14 @@
       tags :
         - refresh
         - pull
+
+    - docker_service:
+        project_src: "{{dest}}/compose"
+        state: present
+      when: compose_file.stat.exists
+      ignore_errors: True
+      tags :
+        - refresh
+        - pull
+        - up
+        - restart

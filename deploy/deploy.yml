@@ -90,7 +90,7 @@
         # version : 1.9.0
 
     - docker_service:
-        project_src: /root/projects/django-postgresql
+        project_src: "{{dest}}/compose"
         state: absent
       ignore_errors: yes
 

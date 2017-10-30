@@ -88,6 +88,7 @@
 
     - stat: path="{{dest}}/compose/docker-compose.yml"
       register: compose_file
+      tags :
         - refresh
         - pull
 

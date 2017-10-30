@@ -92,7 +92,7 @@
     - docker_service:
         project_src: /root/projects/django-postgresql
         state: absent
-        ignore_errors: yes
+      ignore_errors: yes
 
     - git:
         repo: "https://{{repo}}"

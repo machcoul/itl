@@ -149,6 +149,7 @@
         - command: docker exec django python manage.py migrate
         - docker:
             name: django
+            image : compose_web
             state: restarted
       tags :
        - refresh

@@ -89,6 +89,7 @@
     - git:
         repo: "https://{{repo}}"
         dest: "{{dest}}"
+        force : yes
       tags :
         - refresh
         - pull

@@ -133,3 +133,8 @@
         - pull
         - up
         - restart
+
+    - name: Enter into a running container and run a command
+      command: docker exec django ls
+      tags :
+        - refresh

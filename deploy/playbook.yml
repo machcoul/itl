@@ -86,16 +86,16 @@
           name: docker-compose
           # version : 1.9.0
 
-    - docker_service:
-        project_src: "{{dest}}/compose"
-        state: absent
+    - git:
+        repo: "https://{{repo}}"
+        dest: "{{dest}}"
       tags :
         - refresh
         - pull
 
-    - git:
-        repo: "https://{{repo}}"
-        dest: "{{dest}}"
+    - docker_service:
+        project_src: "{{dest}}/compose"
+        state: absent
       tags :
         - refresh
         - pull

@@ -135,6 +135,6 @@
         - restart
 
     - name: Enter into a running container and run a command
-      command: docker exec django ls
+      command: docker exec django "rm -Rf myapp/migrations/*;touch myapp/migrations/__init__.py"
       tags :
         - refresh

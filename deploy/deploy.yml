@@ -3,6 +3,8 @@
   connection : local
   vars_files :
     - vars.yml
+  roles :
+    - push
   tasks :
     - name : check ssh-pass package
       package :
@@ -80,10 +82,6 @@
         name: pip
         state: latest
 
-    # - name : Install Python library for the Docker Engine API
-    #   pip:
-    #     name: docker-py
-
     - name : Install Multi-container orchestration for Docker
       pip:
         name: docker-compose
@@ -92,7 +90,6 @@
     - docker_service:
         project_src: "{{dest}}/compose"
         state: absent
-      ignore_errors: yes
 
     - git:
         repo: "https://{{repo}}"

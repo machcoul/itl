@@ -1,11 +1,13 @@
 ---
 # tasks file for push
-    
-- name : add files
-  command: bash -lc "cd .. && git add ."
+- block :
+  - name : add files
+    command: bash -lc "cd .. && git add ."
 
-- name : commit
-  command: bash -lc "cd .. && git commit -m '{{comment}}'"
+  - name : commit
+    command: bash -lc "cd .. && git commit -m '{{comment}}'"
 
-- name : push
-  command: bash -lc "git push https://'{{git_username}}':'{{git_pwd}}'@{{repo}}"
+  - name : push
+    command: bash -lc "git push https://'{{git_username}}':'{{git_pwd}}'@{{repo}}"
+  tags :
+    - push

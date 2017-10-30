@@ -147,10 +147,15 @@
             path: "{{dest}}/compose/django/myapp/migrations/__init__.py"
         - command: docker exec django python3 manage.py makemigrations
         - command: docker exec django python3 manage.py migrate
+        - docker_service:
+            project_src: "{{dest}}/compose"
+            build: no
+            restarted: true
         # - docker:
         #     name: django
         #     image : compose_web
         #     state: restarted
+      when: compose_file.stat.exists
       tags :
        - refresh
 

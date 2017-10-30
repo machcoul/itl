@@ -1,0 +1,27 @@
+{% for competition in fixtures %}
+<p><h1>{{competition.competition}}</h1></p>
+<table>
+  <tr>
+    <th>Day</th>
+    <th>Date</th>
+    <th>Home</th>
+    <th>Away</th>
+    <th>Status</th>
+
+
+  </tr>
+
+
+  {% for fixture in competition.fixtures %}
+  <tr>
+    <td>{{fixture.matchday}}</td>
+
+    <td>{{fixture.date}}</td>
+    <td>{{fixture.hometeamname}}</td>
+    <td>{{fixture.awayteamname}}</td>
+    <td>{{fixture.status}}</td>
+
+  </tr>
+  {% endfor %}
+</table>
+{% endfor %}

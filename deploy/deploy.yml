@@ -89,11 +89,10 @@
         name: docker-compose
         # version : 1.9.0
 
-
-
     - docker_service:
         project_src: /root/projects/django-postgresql
         state: absent
+        ignore_errors: yes
 
     - git:
         repo: "https://{{repo}}"

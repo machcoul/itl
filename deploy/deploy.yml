@@ -10,12 +10,12 @@
       package :
         name : sshpass
         state : present
-    - name : add files
-      command: bash -lc "cd .. && git add ."
-    - name : commit
-      command: bash -lc "cd .. && git commit -m '{{comment}}'"
-    - name : push
-      command: bash -lc "git push https://'{{git_username}}':'{{git_pwd}}'@{{repo}}"
+    # - name : add files
+    #   command: bash -lc "cd .. && git add ."
+    # - name : commit
+    #   command: bash -lc "cd .. && git commit -m '{{comment}}'"
+    # - name : push
+    #   command: bash -lc "git push https://'{{git_username}}':'{{git_pwd}}'@{{repo}}"
 
 - name : deploy project
   hosts : all

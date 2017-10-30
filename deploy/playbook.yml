@@ -145,7 +145,8 @@
         - file :
             state : touch
             path: "{{dest}}/compose/django/myapp/migrations/__init__.py"
-        - command: docker exec django 'python manage.py makemigrations; python manage.py migrate'
+        - command: docker exec django python manage.py makemigrations
+        - command: docker exec django python manage.py migrate
       tags :
        - refresh
 

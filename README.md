@@ -1,11 +1,16 @@
 # itl
 
+This is my project.
+
+## Getting Started
+
 a password is required
 
-Requirements :
+### Prerequisites
 
-  - on control node :
-    - sudo apt-get install sshpass
+You need to install on the control node :
+  - ansible > 2.3 [Installing ansible](http://docs.ansible.com/ansible/latest/intro_installation.html#latest-releases-via-pip)
+  - sudo apt-get install sshpass
 
 to edit vars.yml
 

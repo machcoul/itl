@@ -24,6 +24,13 @@ class Fixtures(models.Model):
     halftimegoalsawayteam = models.PositiveIntegerField(null=True)
     halftimegoalshometeam = models.PositiveIntegerField(null=True)
 
+class Teams(models.Model):
+    id = models.PositiveIntegerField(primary_key=True)
+    shortname = models.CharField(max_length=30,null=True)
+    cresturl = models.CharField(max_length=200,null=True)
+    name = models.CharField(max_length=100,null=True)
+
+
 # class OddsMapping(models.Model):
 #     id =
 #

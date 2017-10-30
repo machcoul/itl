@@ -17,10 +17,18 @@ def fixtures_view(request):
 
     competitions = Competitions.objects.filter()
     for competition in competitions :
-        fixtures = Fixtures.objects.filter(my_filter_qs,competitionid=competition.id).order_by('date')
+        fixtures =[]
+        f = Fixtures.objects.filter(my_filter_qs,competitionid=competition.id).order_by('date')
+        for fixture in f :
+            print(fixture.id,fixture.hometeamid)
+            url = Teams.objects.filter(id=fixture.hometeamid)
+            if url :
+                print(url[0].cresturl)
+                fixture.url = url[0].cresturl
+            fixtures.append(fixture)
         fixturesList.append({'competition':competition.caption,'fixtures':fixtures})
 
-    print(fixturesList)
+    # print(fixturesList)
 
-    fixtures = Fixtures.objects.filter(my_filter_qs)
+    # fixtures = Fixtures.objects.filter(my_filter_qs)
     return render(request, 'myapp/fixtures.html', {'fixtures': fixturesList})

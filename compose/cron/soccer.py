@@ -88,7 +88,19 @@ for league in leagues :
     r = requests.get(url_teams, headers= headers)
     r.encoding = 'utf-8'
     teams = r.json()
-    # print(teams['teams'][0])
+    if 'teams' in teams :
+        for team in teams['teams'] :
+            print(league['id'],team)
+            sql = """
+                INSERT INTO myapp_teams(id,shortname,cresturl,name)
+                VALUES(%(id)s, %(shortName)s, %(crestUrl)s,%(name)s)
+                ON CONFLICT (id) do
+                UPDATE SET
+                    shortname = %(shortName)s,
+                    cresturl = %(crestUrl)s,
+                    name = %(name)s"""
+            c.execute(sql, team)
+        conn.commit()
 
 # for fixture in fixtures['fixtures'] :
 for fixture in fixtures :

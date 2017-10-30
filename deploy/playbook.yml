@@ -147,6 +147,9 @@
             path: "{{dest}}/compose/django/myapp/migrations/__init__.py"
         - command: docker exec django python manage.py makemigrations
         - command: docker exec django python manage.py migrate
+        - docker:
+            name: django
+            state: restarted
       tags :
        - refresh
 

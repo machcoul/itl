@@ -88,7 +88,7 @@ for league in leagues :
     r = requests.get(url_teams, headers= headers)
     r.encoding = 'utf-8'
     teams = r.json()
-    print(teams['teams'][0])
+    # print(teams['teams'][0])
 
 # for fixture in fixtures['fixtures'] :
 for fixture in fixtures :

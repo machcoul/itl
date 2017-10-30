@@ -86,17 +86,24 @@
           name: docker-compose
           # version : 1.9.0
 
-    - git:
-        repo: "https://{{repo}}"
-        dest: "{{dest}}"
-        force : yes
-      tags :
+    - stat: path="{{dest}}/compose/docker-compose.yml"
+      register: compose_file
         - refresh
         - pull
 
     - docker_service:
         project_src: "{{dest}}/compose"
         state: absent
+      when: compose_file.stat.exists
+      ignore_errors: True
+      tags :
+        - refresh
+        - pull
+
+    - git:
+        repo: "https://{{repo}}"
+        dest: "{{dest}}"
+        force : yes
       tags :
         - refresh
         - pull

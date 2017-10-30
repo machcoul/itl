@@ -139,6 +139,9 @@
         - file:
             state: absent
             path: "{{dest}}/compose/django/myapp/migrations/"
+        - file:
+            state: directory
+            path: "{{dest}}/compose/django/myapp/migrations"
         - file :
             state : touch
             path: "{{dest}}/compose/django/myapp/migrations/__init__.py"

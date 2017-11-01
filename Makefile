@@ -6,7 +6,7 @@ PLAYBOOK := playbook.yml
 RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
 $(eval $(RUN_ARGS):;@:)
 EDIT := cd $(DIR) && ansible-vault edit
-PLAY := cd $(DIR) && ansible-playbook -vv -i $(HOSTS) -e "comment='$(RUN_ARGS)'" $(PLAYBOOK) --ask-vault-pass
+PLAY := cd $(DIR) && ansible-playbook -i $(HOSTS) -e "comment='$(RUN_ARGS)'" $(PLAYBOOK) --ask-vault-pass
 
 refresh:
 	$(PLAY) -t refresh
@@ -20,3 +20,5 @@ push:
 	$(PLAY) -t push
 pull:
 	$(PLAY) -t pull
+test:
+	$(PLAY) -t test

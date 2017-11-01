@@ -1,7 +1,7 @@
 ---
 # tasks file for tests
 - block :
-    - name : test web site
+    - name : check home page
       command : "python test/test.py -u 'http://{{server}}:8000/fixtures' -t 'Premier League' -s"
       changed_when: False
   tags :

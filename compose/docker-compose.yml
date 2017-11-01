@@ -1,0 +1,70 @@
+version: '3'
+
+services:
+
+  # cron
+  cron :
+    build : ./cron
+    container_name : cron
+    command: cron && tail -f /var/log/cron.log
+    volumes :
+      - ./cron:/cron
+    depends_on:
+      - db
+
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./django:/src
+      - ./nginx:/etc/nginx/conf.d
+      # - /static:/static
+    depends_on:
+      - web
+
+  # database
+
+  db:
+    image: postgres
+    container_name : db
+    volumes :
+      - db-data:/var/lib/postgresql/data
+
+  # django
+
+  web:
+    build: .
+    container_name : django
+    command: python3 manage.py runserver 0.0.0.0:8000
+    # command: bash -c "gunicorn myapp.wsgi -b 0.0.0.0:8000"
+    volumes:
+      - ./django:/code
+    # ports:
+      # - "8000:8000"
+    depends_on:
+      - db
+
+  # pgadmin4
+  # https://hub.docker.com/r/dpage/pgadmin4/
+
+  pg:
+    image : dpage/pgadmin4
+    container_name : pgadmin
+    ports :
+      - "8080:80" # redirection to 8080
+    environment :
+      # user/pwd
+      - PGADMIN_DEFAULT_EMAIL=postgres@example.com
+      - PGADMIN_DEFAULT_PASSWORD=postgres
+    volumes:
+      - pg-admin:/var/lib/pgadmin
+    depends_on:
+      - db
+
+
+volumes :
+  db-data :
+  pg-admin :

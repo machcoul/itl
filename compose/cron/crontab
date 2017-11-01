@@ -1,1 +1,2 @@
+* * * * * root python /cron/bs.py >> /var/log/cron.log 2>&1
 * * * * * root python /cron/soccer.py >> /var/log/cron.log 2>&1

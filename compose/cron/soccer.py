@@ -7,7 +7,14 @@
 # #
 # #
 # # import http.client
+from datetime import datetime
 import json
+import os
+
+start = datetime.now()
+print start.strftime("%Y-%m-%d %H:%M:%S"),__file__,'starting'
+
+
 
 
 API_TOKEN = '743292b6b4f041c380822cccafd92c8a'
@@ -61,11 +68,11 @@ fixtures = pastfixtures['fixtures'] + nextfixtures['fixtures']
 # print(fixtures['timeFrameEnd'])
 #
 #
-fixture=fixtures[0]
-for key, value in fixture.iteritems() :
-    print ( key, value )
-# _links = fixture['_links']
-# print(_links['awayTeam'])
+# fixture=fixtures[0]
+# for key, value in fixture.iteritems() :
+#     print ( key, value )
+# # _links = fixture['_links']
+# # print(_links['awayTeam'])
 
 # conn = sqlite3.connect('db.sqlite3')
 conn = psycopg2.connect("host=db dbname=postgres user=postgres password=postgres")
@@ -90,7 +97,7 @@ for league in leagues :
     teams = r.json()
     if 'teams' in teams :
         for team in teams['teams'] :
-            print(league['id'],team)
+            # print(league['id'],team)
             sql = """
                 INSERT INTO myapp_teams(id,shortname,cresturl,name)
                 VALUES(%(id)s, %(shortName)s, %(crestUrl)s,%(name)s)
@@ -115,15 +122,14 @@ for fixture in fixtures :
         fixture['halfTimeGoalsHomeTeam'] = None
 
     sql = """
-        INSERT INTO myapp_fixtures(id, status,matchday,hometeamid,hometeamname,awayteamname,date,competitionid,goalsawayteam,goalshometeam,halftimegoalshometeam,halftimegoalsawayteam)
-        VALUES(%(id)s, %(status)s, %(matchday)s,%(homeTeamId)s,%(homeTeamName)s,%(awayTeamName)s,%(date)s,%(competitionId)s,%(goalsAwayTeam)s,%(goalsHomeTeam)s,%(halfTimeGoalsHomeTeam)s,%(halfTimeGoalsAwayTeam)s)
+        INSERT INTO myapp_fixtures(id, status,matchday,hometeamid,awayteamid,date,competitionid,goalsawayteam,goalshometeam,halftimegoalshometeam,halftimegoalsawayteam)
+        VALUES(%(id)s, %(status)s, %(matchday)s,%(homeTeamId)s,%(awayTeamId)s,%(date)s,%(competitionId)s,%(goalsAwayTeam)s,%(goalsHomeTeam)s,%(halfTimeGoalsHomeTeam)s,%(halfTimeGoalsAwayTeam)s)
         ON CONFLICT (id) do
         UPDATE SET
             status = %(status)s,
             matchday = %(matchday)s,
             hometeamid = %(homeTeamId)s,
-            hometeamname = %(homeTeamName)s,
-            awayteamname = %(awayTeamName)s,
+            awayteamid = %(awayTeamId)s,
             date = %(date)s,
             competitionid = %(competitionId)s,
             goalsawayteam = %(goalsAwayTeam)s,
@@ -133,6 +139,7 @@ for fixture in fixtures :
     c.execute(sql, fixture)
 conn.commit()
 conn.close()
+
 #
 #
 # conn = sqlite3.connect('example.db')
@@ -144,3 +151,7 @@ conn.close()
 # for id in ids :
 #     league_id =id[0]
 #     print league_id
+
+end = datetime.now()
+delay = end-start
+print end.strftime("%Y-%m-%d %H:%M:%S"),__file__,'terminated in',delay.total_seconds(),'s.'

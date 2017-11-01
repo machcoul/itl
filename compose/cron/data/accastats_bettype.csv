@@ -1,0 +1,46 @@
+id;name
+0;Home Win
+1;Draw
+2;Away Win
+3;Home Win or Draw
+4;Away Win or Draw
+5;Home Win or Away Win
+6;Over 1.5 Goals
+7;Over 2.5 Goals
+8;Over 3.5 Goals
+9;Under 1.5 Goals
+10;Under 2.5 Goals
+11;Under 3.5 Goals
+12;Both Teams To Score - Yes
+13;Both Teams To Score - No
+14;Over 0.5 Home Goals
+15;Over 1.5 Home Goals
+16;Over 2.5 Home Goals
+17;Under 0.5 Home Goals
+18;Under 1.5 Home Goals
+19;Under 2.5 Home Goals
+20;Over 0.5 Away Goals
+21;Over 1.5 Away Goals
+22;Over 2.5 Away Goals
+23;Under 0.5 Away Goals
+24;Under 1.5 Away Goals
+25;Under 2.5 Away Goals
+26;Half Time Home Win
+27;Half Time Draw
+28;Half Time Away Win
+29;Half Time Home Win or Draw
+30;Half Time Away Win or Draw
+31;Half Time Home Win or Away Win
+32;Home Clean Sheet - Yes
+33;Home Clean Sheet - No
+34;Home To Win Both Halves
+35;Home To Score Both Halves
+36;Home Win & BTS
+37;Home Win To Nil
+38;Away Clean Sheet - Yes
+39;Away Clean Sheet - No
+40;Away To Win Both Halves
+41;Away To Score Both Halves
+42;Away Win & BTS
+43;Away Win To Nil
+44;No Match Goals

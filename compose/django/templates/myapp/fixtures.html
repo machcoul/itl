@@ -7,7 +7,9 @@
     <th>Home</th>
     <th>Away</th>
     <th>Status</th>
-
+    <th>1</th>
+    <th>X</th>
+    <th>2</th>
 
   </tr>
 
@@ -17,10 +19,12 @@
     <td>{{fixture.matchday}}</td>
 
     <td>{{fixture.date}}</td>
-    <td> <img src="{{fixture.url}}" width="40" height="40"> {{fixture.hometeamname}}</td>
-    <td>{{fixture.awayteamname}}</td>
+    <td><img src="{{fixture.homeurl}}" width="40" height="40"> {{fixture.hometeamid}} - {{fixture.homename}}</td>
+    <td><img src="{{fixture.awayurl}}" width="40" height="40">{{fixture.awayname}}</td>
     <td>{{fixture.status}}</td>
-
+    <td>{{fixture.oddshome}}</td>
+    <td>{{fixture.oddsdraw}}</td>
+    <td>{{fixture.oddsaway}}</td>
   </tr>
   {% endfor %}
 </table>

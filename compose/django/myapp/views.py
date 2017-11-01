@@ -20,11 +20,14 @@ def fixtures_view(request):
         fixtures =[]
         f = Fixtures.objects.filter(my_filter_qs,competitionid=competition.id).order_by('date')
         for fixture in f :
-            print(fixture.id,fixture.hometeamid)
-            url = Teams.objects.filter(id=fixture.hometeamid)
-            if url :
-                print(url[0].cresturl)
-                fixture.url = url[0].cresturl
+            homeurl = Teams.objects.filter(id=fixture.hometeamid)
+            if homeurl :
+                fixture.homeurl = homeurl[0].cresturl
+                fixture.homename = homeurl[0].name
+            awayurl = Teams.objects.filter(id=fixture.awayteamid)
+            if awayurl :
+                fixture.awayurl = awayurl[0].cresturl
+                fixture.awayname = awayurl[0].name
             fixtures.append(fixture)
         fixturesList.append({'competition':competition.caption,'fixtures':fixtures})
 

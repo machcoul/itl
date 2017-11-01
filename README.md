@@ -34,7 +34,9 @@ How to push on github and deploy on server (required password)
 
 ### Notes
 
-Remove sensitive data in GitHub repository [help](https://help.github.com/articles/removing-sensitive-data-from-a-repository/)
+#### Remove sensitive data in GitHub repository
+
+[help](https://help.github.com/articles/removing-sensitive-data-from-a-repository/)
 
   - delete files
   - Overwrite your existing tags
